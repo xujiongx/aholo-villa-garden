@@ -45,6 +45,7 @@ function enterWorld(world) {
   }
   const url = new URL("/walk.html", window.location.origin);
   url.searchParams.set("content", content);
+  url.searchParams.set("up", world.upAxis || "Z");
   if (world.panoUrl) url.searchParams.set("poster", world.panoUrl);
   window.location.href = url.href;
 }
@@ -119,8 +120,8 @@ async function refreshList() {
     );
     els.statusChip.textContent = `${data.totalCount ?? worlds.length} 个任务 · ${readyCount} 可漫游`;
     els.hint.textContent = running
-      ? "仍有任务在进行；列表会自动刷新。进入后点击画面，鼠标即可转向。"
-      : "点「进入漫游」后：点击画面锁定鼠标转向，WASD 移动。";
+      ? "仍有任务在进行；列表会自动刷新。完成后可进入控制人物行走。"
+      : "点「进入游玩」后：WASD 控制 3D 人物，鼠标转动视角。";
     return running;
   } catch (err) {
     els.statusChip.textContent = "接口错误";
