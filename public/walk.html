@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>世界漫游</title>
+    <link rel="stylesheet" href="/vendor/supersplat-viewer/viewer.css" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #050805;
+        color: #e8f0ea;
+        font-family: system-ui, sans-serif;
+        overflow: hidden;
+      }
+      #toolbar {
+        position: fixed;
+        z-index: 20;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        padding: 0.65rem 1rem;
+        background: rgba(8, 14, 10, 0.92);
+        font-size: 0.88rem;
+      }
+      #toolbar a {
+        color: #082016;
+        background: #7dcea0;
+        text-decoration: none;
+        padding: 0.4rem 0.85rem;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+      #host {
+        position: absolute;
+        inset: 0;
+        top: 48px;
+      }
+      #hint {
+        position: fixed;
+        z-index: 21;
+        left: 50%;
+        bottom: 1.4rem;
+        transform: translateX(-50%);
+        max-width: min(520px, 92vw);
+        padding: 0.85rem 1.1rem;
+        border-radius: 14px;
+        background: rgba(8, 14, 10, 0.9);
+        border: 1px solid rgba(232, 240, 234, 0.16);
+        text-align: center;
+        line-height: 1.45;
+      }
+      #hint.error {
+        border-color: #e57373;
+        color: #ffcdd2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="toolbar">
+      <a href="/">退出漫游</a>
+      <span>点击画面锁定鼠标 · 移动鼠标转向 · WASD 移动 · Esc 解锁</span>
+    </div>
+    <div id="host"></div>
+    <div id="hint">正在加载场景…</div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "playcanvas": "/vendor/playcanvas/build/playcanvas.mjs",
+          "playcanvas/": "/vendor/playcanvas/",
+          "@playcanvas/supersplat-viewer/viewer": "/vendor/supersplat-viewer/viewer.js",
+          "@playcanvas/supersplat-viewer/settings": "/vendor/supersplat-viewer/settings.js"
+        }
+      }
+    </script>
+    <script type="module" src="/walk-boot.mjs"></script>
+  </body>
+</html>
